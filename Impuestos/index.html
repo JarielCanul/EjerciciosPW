@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Interés Compuesto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Space+Grotesk:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div class="hero__left">
+          <div class="pill">Capitalización mensual · 12 meses</div>
+          <h1>Calculadora de interés compuesto</h1>
+          <p>
+            Ingresa una cantidad y obtén el total al final de 1 año con tasas
+            anuales del 15%, 13.5% y 9%.
+          </p>
+        </div>
+        <div class="hero__right" aria-hidden="true">
+          <div class="stamp">
+            <div class="stamp__title">A = P·(1 + r/12)<sup>12</sup></div>
+            <div class="stamp__subtitle">interés compuesto</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="sheet" aria-label="Calculadora">
+        <div class="sheet__grid">
+          <div class="sheet__calc">
+            <h2 class="sectionTitle">Datos</h2>
+            <form id="calcForm" class="form" novalidate>
+              <label class="field">
+                <span class="field__label">Cantidad de dinero</span>
+                <span class="field__control">
+                  <span class="field__prefix" aria-hidden="true">$</span>
+                  <input
+                    id="principal"
+                    name="principal"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    placeholder="Ej. 25000"
+                    aria-describedby="help err"
+                    required
+                  />
+                </span>
+                <span id="help" class="field__help">Solo números. Usa punto para decimales.</span>
+                <span id="err" class="field__error" role="alert" aria-live="polite"></span>
+              </label>
+
+              <button id="btnCalc" class="btn" type="submit">Calcular</button>
+            </form>
+
+            <div class="note">
+              <div class="note__k">Tasas</div>
+              <div class="note__v">15% · 13.5% · 9% anual</div>
+              <div class="note__k">Horizonte</div>
+              <div class="note__v">12 meses</div>
+            </div>
+          </div>
+
+          <div class="sheet__results" aria-live="polite">
+            <div class="head">
+              <h2 class="sectionTitle">Resultados</h2>
+              <div class="head__meta">Totales obtenidos (incluye capital + intereses)</div>
+            </div>
+
+            <div class="rates" role="list">
+              <article class="rate rate--15" role="listitem">
+                <div class="rate__top">
+                  <div class="rate__tag">15% anual</div>
+                  <div class="rate__value" id="out15">—</div>
+                </div>
+                <div class="rate__bar" aria-hidden="true">
+                  <div class="rate__fill" id="bar15"></div>
+                </div>
+                <div class="rate__sub" id="gain15"></div>
+              </article>
+
+              <article class="rate rate--135" role="listitem">
+                <div class="rate__top">
+                  <div class="rate__tag">13.5% anual</div>
+                  <div class="rate__value" id="out135">—</div>
+                </div>
+                <div class="rate__bar" aria-hidden="true">
+                  <div class="rate__fill" id="bar135"></div>
+                </div>
+                <div class="rate__sub" id="gain135"></div>
+              </article>
+
+              <article class="rate rate--9" role="listitem">
+                <div class="rate__top">
+                  <div class="rate__tag">9% anual</div>
+                  <div class="rate__value" id="out9">—</div>
+                </div>
+                <div class="rate__bar" aria-hidden="true">
+                  <div class="rate__fill" id="bar9"></div>
+                </div>
+                <div class="rate__sub" id="gain9"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        Tasas anuales nominales, capitalización mensual.
+      </footer>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
