@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COLORES</title>
+    <style>
+      :root {
+        --theme: #2563eb;
+        --panel: rgba(255, 255, 255, 0.92);
+        --text: #0b1020;
+        --muted: rgba(11, 16, 32, 0.72);
+        --border: rgba(11, 16, 32, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background: var(--theme);
+      }
+
+      main {
+        width: min(720px, 92vw);
+        margin: 0 auto;
+        padding: 48px 0;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        backdrop-filter: blur(6px);
+        border-radius: 16px;
+        padding: 22px;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        letter-spacing: 0.2px;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text);
+        outline: none;
+        font-size: 16px;
+      }
+
+      input[type="text"]::placeholder {
+        color: rgba(11, 16, 32, 0.55);
+      }
+
+      input[type="text"]:focus {
+        border-color: color-mix(in srgb, var(--theme) 60%, white 10%);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--theme) 25%, transparent);
+      }
+
+      button {
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid color-mix(in srgb, var(--theme) 70%, white 10%);
+        background: var(--theme);
+        color: white;
+        cursor: pointer;
+        font-weight: 650;
+        font-size: 15px;
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      .meta {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .swatch {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        background: var(--theme);
+        border: 1px solid rgba(11, 16, 32, 0.22);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .error {
+        margin-top: 10px;
+        color: rgba(185, 28, 28, 0.95);
+        font-size: 13px;
+        display: none;
+      }
+
+      .examples {
+        margin-top: 16px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .examples button {
+        background: transparent;
+        color: rgba(11, 16, 32, 0.88);
+        border-color: rgba(11, 16, 32, 0.22);
+        font-weight: 600;
+      }
+
+      .examples button:hover {
+        border-color: color-mix(in srgb, var(--theme) 60%, white 10%);
+        color: rgba(11, 16, 32, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="card">
+        <h1>Cambia el color del sitio</h1>
+        <p>Escribe un color (por ejemplo: azul, rojo, verde) o un valor HEX (por ejemplo: #ff00aa) y aplícalo.</p>
+
+        <div class="row">
+          <input id="colorInput" type="text" inputmode="text" autocomplete="off" placeholder="Ej: azul, rojo, morado, #22c55e" />
+          <button id="applyBtn" type="button">Aplicar</button>
+        </div>
+
+        <div class="meta">
+          <span class="chip"><span class="swatch" aria-hidden="true"></span> <span id="currentLabel">Color actual: azul</span></span>
+          <span class="chip" id="hint">Tip: también acepta “blue”, “red”, etc.</span>
+        </div>
+
+        <div class="error" id="errorMsg">No reconocí ese color. Prueba con: azul, rojo, verde, amarillo, morado o un HEX como #ff0000.</div>
+
+        <div class="examples" aria-label="Ejemplos">
+          <button type="button" data-color="azul">azul</button>
+          <button type="button" data-color="rojo">rojo</button>
+          <button type="button" data-color="verde">verde</button>
+          <button type="button" data-color="amarillo">amarillo</button>
+          <button type="button" data-color="morado">morado</button>
+          <button type="button" data-color="#ff6b6b">#ff6b6b</button>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
