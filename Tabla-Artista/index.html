@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artistas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Tabla de artistas</h1>
+        <p>Los datos (álbumes, Grammys y año) se generan automáticamente al cargar la página.</p>
+      </header>
+
+      <div class="card">
+        <table aria-label="Tabla de artistas y estadísticas">
+          <thead>
+            <tr>
+              <th>Artista</th>
+              <th class="num">Álbumes</th>
+              <th class="num">Grammys</th>
+              <th class="num">Año</th>
+            </tr>
+          </thead>
+          <tbody id="artists-body"></tbody>
+        </table>
+      </div>
+
+      <footer>
+        <span class="tag" id="generated-at"></span>
+      </footer>
+    </div>
+    <script src="script.js" defer></script>
+  </body>
+</html>
